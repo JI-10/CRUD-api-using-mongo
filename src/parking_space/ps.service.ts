@@ -53,5 +53,13 @@ export class psService {
         }
     }
 
+    async deletall(){
+        await this.psModel.deleteMany({})
+        return "Database cleared"
+    }
 
+    async getall(){
+        const obj=await this.psModel.find({})
+        return obj
+    }
 }
