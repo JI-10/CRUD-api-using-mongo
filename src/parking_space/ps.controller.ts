@@ -1,6 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Put, Post } from "@nestjs/common";
 import { url } from "inspector";
-import { psDTO } from './dto';
+import { psDTO, updateDTO } from './dto';
 import { psService } from "./ps.service";
 
 @Controller('ps')
@@ -16,13 +16,13 @@ export class psController{
         return this.psService.getPS(params)
     }
 
-    @Patch()
-    updatePS(@Body() dto:psDTO){
-        return "updating parking space"
+    @Put(':id')
+    updatePS(@Param('id') params:string,@Body() image:updateDTO){
+        return this.psService.updatePS(params,image.image)
     }
     
-    @Delete()
-    deletePS(){
-        return "deleting parking space"
+    @Delete(':id')
+    deletePS(@Param('id') params:string){
+        return this.psService.deletPS(params)
     }
 }
