@@ -6,7 +6,7 @@ export const psSchema = new mongoose.Schema({
     image: String,
     location: {type:JSON,unique:true}
 },{timestamps:true})
-
+// psSchema.index({"expiresAt":1},{expireAfterSeconds:1})
 export class Ps{
     
           id: string 
