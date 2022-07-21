@@ -3,7 +3,9 @@ import { Cron } from "@nestjs/schedule";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, MongooseError } from "mongoose";
 import { Ps } from "./ps.model";
-import { psDTO, updateDTO } from "./dto";
+import { psDTO } from "../dto";
+import { extname } from "path";
+import {Express} from 'express'
 
 
 @Injectable()
@@ -15,17 +17,17 @@ export class psService {
     async createPS(dto: psDTO) {
         try {
             const ps = new this.psModel({
-                user_profile: dto.user_profile,
-                image: dto.photo,
+                user_profile: dto.user_suggested,
+                image: dto.image,
                 location: JSON.parse(dto.location)
             })
             await ps.save()
             return ps.id
         } catch (err) {
-                throw new ForbiddenException('Parking space with given location already exists.')
+            throw new ForbiddenException('Parking space with given location already exists.')
         }
     }
-    
+
     async getPS(Id: string) {
         if (Id.length != 24) throw new ForbiddenException('Enter correct Id')
         const ps = await this.psModel.findById(Id)
@@ -53,13 +55,13 @@ export class psService {
         }
     }
 
-    async deletall(){
+    async deletall() {
         await this.psModel.deleteMany({})
         return "Database cleared"
     }
 
-    async getall(){
-        const obj=await this.psModel.find({})
+    async getall() {
+        const obj = await this.psModel.find({})
         return obj
     }
 }

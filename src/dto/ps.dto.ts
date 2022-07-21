@@ -4,19 +4,19 @@ import { isStringObject } from "util/types"
 export class psDTO {
     @IsString()
     @IsNotEmpty()
-    user_profile: string
+    user_suggested: string
 
     @IsNotEmpty()
     @IsJSON()
     location: string
 
     @IsNotEmpty()
-    @IsString()
-    photo: string
+    image: JSON
+
+    @IsNotEmpty()
+    tags: Array<string>
+
+    description: string
+
 }
 
-export class updateDTO{
-    @IsNotEmpty()
-    @IsString()
-    image:string
-}
