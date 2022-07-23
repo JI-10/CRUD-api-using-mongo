@@ -23,8 +23,8 @@ export class AuthService {
 
     
 
-    async jwt(username:string,id:string,password:string){
-        return this.jwtService.sign({
+    jwt(username:string,id:string,password:string){
+        return this.jwtService.signAsync({
             sub:id,
             name:username,
             password:password

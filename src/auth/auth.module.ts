@@ -4,11 +4,19 @@ import { userModule } from 'src/users/user.module';
 import { userServices } from 'src/users/user.services';
 import { authController } from './auth.controller';
 import { AuthService } from './auth.service';
+import {PassportModule} from '@nestjs/passport'
+import { JwtStrategy } from './jwt.strategy';
 require('dotenv').config()
 
 @Module({
-  imports: [userModule,JwtModule],
+  imports: [userModule,
+    PassportModule,
+    JwtModule.register({
+      secret: 'secret-key',
+      signOptions: { expiresIn: '10m' },
+    }),
+  ],
   controllers: [authController],
-  providers: [AuthService]
+  providers: [AuthService,JwtStrategy]
 })
 export class AuthModule { }

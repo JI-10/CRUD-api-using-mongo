@@ -5,14 +5,15 @@ import { psModule } from './parking_spaces/ps.module';
 import { userModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ValidationError } from 'class-validator';
 require('dotenv').config()
 @Module({
     imports: [
         // ConfigModule.forRoot({isGlobal: true,}), 
-        ScheduleModule.forRoot(), 
+        ScheduleModule.forRoot(),
         psModule, userModule, 
         MongooseModule.forRoot("mongodb://localhost:27017/Database"), 
-        // AuthModule
+        AuthModule
     ]
 })
 export class AppModule { }

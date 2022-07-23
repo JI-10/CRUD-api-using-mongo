@@ -31,8 +31,6 @@
     "@nestjs/schedule": "^2.0.1",
     "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.1",
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
     "joi": "^17.6.0",
     "mongoose": "^6.4.6",

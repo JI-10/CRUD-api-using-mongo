@@ -1,12 +1,10 @@
-import { BadRequestException, ForbiddenException, HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import {  HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { usersignupDTO, userloginDTO } from "../dto";
 import { User } from "./user.model";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 import * as bcrypt from 'bcrypt'
 import { isEmail } from "class-validator";
-import { string } from "joi";
-import { HttpErrorByCode } from "@nestjs/common/utils/http-error-by-code.util";
 @Injectable()
 export class userServices {
 
@@ -17,7 +15,6 @@ export class userServices {
         return bcrypt.hashSync(rawPassword, salt);
     }
     async createuser(user: usersignupDTO) {
-
         try {
             const new_user = new this.userModel({
                 username: user.username,
