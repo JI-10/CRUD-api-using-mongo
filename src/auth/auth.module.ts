@@ -13,7 +13,7 @@ require('dotenv').config()
     PassportModule,
     JwtModule.register({
       secret: 'secret-key',
-      signOptions: { expiresIn: '10m' },
+      signOptions: { expiresIn: '1h' },
     }),
   ],
   controllers: [authController],

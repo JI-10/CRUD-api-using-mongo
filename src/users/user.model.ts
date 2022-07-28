@@ -6,7 +6,7 @@ export const userSchema = new mongoose.Schema({
     alloted_space: String,
     email: {type:String,unique:true},
     password: {type:String},
-    image:String,
+    image:Buffer,
 })
 
 export class User{
@@ -16,5 +16,5 @@ export class User{
     alloted_space: string
     email: string
     password: string
-    image:string
+    image:Buffer
 }

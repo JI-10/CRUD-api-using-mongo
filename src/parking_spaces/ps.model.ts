@@ -7,7 +7,10 @@ export const psSchema = new mongoose.Schema({
     user_alloted: String,
     tags: String,
     desc: String,
-    image: String,
+    image: {
+        type:Buffer,
+        require:true
+    },
     location: { type: JSON, unique: true }
 
 }, { timestamps: true })
